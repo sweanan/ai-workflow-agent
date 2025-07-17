@@ -261,7 +261,10 @@ public class IssueProcessingAgent
             
             //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber, new NewLabel("TPM", "blue"));
             //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber,"TPM" );
-            await context.GitHub.Issue.Labels.Create(owner, repo, context.IssueNumber, new string[] { "TPM" });
+            var labelsToAdd = new[] { "bug", "help wanted" };
+            await client.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, labelsToAdd);
+            Console.WriteLine("Labels added to the issue.");
+            // await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber,"TPM" );
 
 
             context.Logger.LogInformation($"Comment posted successfully to {context.Repository}#{context.IssueNumber}");
