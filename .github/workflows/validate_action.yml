@@ -102,7 +102,7 @@ jobs:
           echo "  uses: mattdot/tpmagent@v1"
           echo "  with:"
           echo "    issue_content: \${{ github.event.issue.body }}"
-          echo "    github_token: \${{ secrets.GITHUB_TOKEN }}"
+          echo "    github_token: \${{ secrets.HVE_TOKEN }}"
           echo "    repository: \${{ github.repository }}"
           echo "    issue_number: \${{ github.event.issue.number }}"
           echo ""
