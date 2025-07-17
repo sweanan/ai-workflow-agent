@@ -258,7 +258,8 @@ public class IssueProcessingAgent
             
             // Post the comment to GitHub
             await context.GitHub.Issue.Comment.Create(owner, repo, context.IssueNumber, context.GeneratedComment);
-            
+            await context.GitHub.Issue.Label.Add(owner, repo, context.IssueNumber, new NewLabel("TPM", "blue"));
+
             context.Logger.LogInformation($"Comment posted successfully to {context.Repository}#{context.IssueNumber}");
         }
         finally
