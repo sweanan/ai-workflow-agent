@@ -257,10 +257,11 @@ public class IssueProcessingAgent
             var repo = repoParts[1];
             
             // Post the comment to GitHub
-            await context.GitHub.Issue.Comment.Create(owner, repo, context.IssueNumber, context.GeneratedComment);
+            //await context.GitHub.Issue.Comment.Create(owner, repo, context.IssueNumber, context.GeneratedComment);
+            
             //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber, new NewLabel("TPM", "blue"));
             //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber,"TPM" );
-            await context.GitHub.Issue.Labels.Add(owner, repo, issueNumber, new string[] { "TPM" });
+            await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber, new string[] { "TPM" });
 
 
             context.Logger.LogInformation($"Comment posted successfully to {context.Repository}#{context.IssueNumber}");
