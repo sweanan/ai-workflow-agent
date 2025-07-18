@@ -27,3 +27,7 @@ runs:
   image: 'Dockerfile'
 
 
+
+branding:
+  icon: 'shield'
+  color: 'blue'

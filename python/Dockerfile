@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy src folder
 COPY src/ ./src/
+COPY src/main.py /github/workspace/src/main.py
 
 # ✅ Debug: Confirm script and dependencies are present
 RUN echo "Listing contents of /app for verification:" && ls -l /app
@@ -21,6 +22,7 @@ RUN echo "Listing /app/src for verification:" && ls -l /app/src
 # Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+RUN ls -R /github/workspace
 
 # Set the entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
