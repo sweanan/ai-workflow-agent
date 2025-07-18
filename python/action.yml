@@ -21,17 +21,17 @@ inputs:
     default: 'azure'
   azure_openai_key:
     description: 'Azure OpenAI API key'
-    required: true
+    required: false
   azure_openai_endpoint:
     description: 'Azure OpenAI API endpoint'
-    required: true
+    required: false
   azure_openai_api_version:
     description: 'Azure OpenAI API version'
-    required: true
+    required: false
     default: '2024-02-15-preview'
   azure_openai_deployment:
     description: 'Azure OpenAI deployment name'
-    required: true
+    required: false
     default: 'gpt-35-turbo'
 outputs:
   result:
