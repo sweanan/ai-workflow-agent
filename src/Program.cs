@@ -259,10 +259,7 @@ public class IssueProcessingAgent
             // Post the comment to GitHub
             await context.GitHub.Issue.Comment.Create(owner, repo, context.IssueNumber, context.GeneratedComment);
             
-            //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber, new NewLabel("TPM", "blue"));
-            //await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber,"TPM" );
-            //var labelsToAdd = new[] { "bug", "help wanted" };
-            Console.WriteLine(context.Analysis.Type);
+            // Add labels based on analysis to the GitHub issue
             await context.GitHub.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, new[] { context.Analysis.Type });
 
             // var newLabel = new NewLabel("enhancement", "00ff00"); // Name and color in hex
