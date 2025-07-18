@@ -15,7 +15,24 @@ inputs:
   issue_number:
     description: 'Issue number to comment on'
     required: true
-
+  azure_openai_api_type:
+    description: 'Azure OpenAI API type (default: azure)'
+    required: false
+    default: 'azure'
+  azure_openai_key:
+    description: 'Azure OpenAI API key'
+    required: true
+  azure_openai_endpoint:
+    description: 'Azure OpenAI API endpoint'
+    required: true
+  azure_openai_api_version:
+    description: 'Azure OpenAI API version'
+    required: true
+    default: '2024-02-15-preview'
+  azure_openai_deployment:
+    description: 'Azure OpenAI deployment name'
+    required: true
+    default: 'gpt-35-turbo'
 outputs:
   result:
     description: 'Result of the operation'

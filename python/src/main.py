@@ -16,11 +16,11 @@ def classify_workitem(work_item):
         str: Classification result (e.g., 'Bug' or 'Not a Bug').
     """
     # Read environment variables
-    openai.api_type = os.getenv("AZURE_OPENAI_API_TYPE", "azure")
-    openai.api_key = os.getenv("AZURE_OPENAI_KEY")
-    openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
-    openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
-    deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT")
+    openai.api_type = os.getenv("INPUT_AZURE_OPENAI_API_TYPE", "azure")
+    openai.api_key = os.getenv("INPUT_AZURE_OPENAI_KEY")
+    openai.api_base = os.getenv("INPUT_AZURE_OPENAI_ENDPOINT")
+    openai.api_version = os.getenv("INPUT_AZURE_OPENAI_API_VERSION")
+    deployment_name = os.getenv("INPUT_AZURE_OPENAI_DEPLOYMENT")
 
     # Define system and user prompts
     #system_prompt = "You are a helpful software engineer assistant that classifies work items as bugs or not."
