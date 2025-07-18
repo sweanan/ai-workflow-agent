@@ -19,6 +19,9 @@ class IssueProcessingAgent:
         # Post the comment to GitHub
         self.post_comment(repository, issue_number, comment)
         
+        # Add labels based on analysis
+        self.add_labels(repository, issue_number, analysis)
+
         return "Issue processed successfully"
 
     def analyze_issue(self, issue_content):
@@ -75,7 +78,7 @@ class IssueProcessingAgent:
         owner, repo = repository.split('/')
         issue = self.github_client.get_repo(f"{owner}/{repo}").get_issue(number=issue_number)
         issue.add_to_labels(analysis['type'])
-        self.logger.info("Comment posted successfully")
+        self.logger.info("Added Labels successfully")
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
