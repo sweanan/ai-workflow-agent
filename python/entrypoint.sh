@@ -32,7 +32,7 @@ echo "Verbose: $INPUT_VERBOSE"
 
 # Run the Python application
 echo "Running Python AI Workflow Agent..."
-python src/main.py
+python /app/src/main.py
 
 # # Check if the output file was created
 # if [ -f "/tmp/github_output.txt" ]; then
