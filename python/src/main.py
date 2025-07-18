@@ -68,8 +68,13 @@ class IssueProcessingAgent:
         owner, repo = repository.split('/')
         issue = self.github_client.get_repo(f"{owner}/{repo}").get_issue(number=issue_number)
         issue.create_comment(comment)
-        issue.add_to_labels("bug", "enhancement")
-        
+        # issue.add_to_labels("bug", "enhancement")
+        self.logger.info("Comment posted successfully")
+
+    def add_labels(self, repository, issue_number, analysis):
+        owner, repo = repository.split('/')
+        issue = self.github_client.get_repo(f"{owner}/{repo}").get_issue(number=issue_number)
+        issue.add_to_labels(analysis['type'])
         self.logger.info("Comment posted successfully")
 
 if __name__ == "__main__":
