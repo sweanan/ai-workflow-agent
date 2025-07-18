@@ -260,13 +260,29 @@ public class IssueProcessingAgent
             await context.GitHub.Issue.Comment.Create(owner, repo, context.IssueNumber, context.GeneratedComment);
             
             // Add labels based on analysis to the GitHub issue
-            await context.GitHub.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, new[] { context.Analysis.Type });
+            // await context.GitHub.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, new[] { context.Analysis.Type });
+            //  // Add labels based on analysis to the GitHub issue
+            // await context.GitHub.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, new[] { context.Analysis.Type });
+            // Add labels based on analysis to the GitHub issue
+            try
+            {
+                var label = context.Analysis.Type;
 
-            // var newLabel = new NewLabel("enhancement", "00ff00"); // Name and color in hex
-            // var createdLabel = await client.Issue.Labels.Create(owner, repo, newLabel);
+                // Validate label format
+                if (string.IsNullOrWhiteSpace(label) || label.Length > 50 || label.Contains(" "))
+                {
+                    throw new ArgumentException("Invalid label format");
+                }
+
+                await context.GitHub.Issue.Labels.AddToIssue(owner, repo, context.IssueNumber, new[] { label });
+                context.Logger.LogInformation($"Label '{label}' added successfully to {context.Repository}#{context.IssueNumber}");
+            }
+            catch (Exception ex)
+            {
+                context.Logger.LogWarning(ex, "Failed to add label to the issue");
+            }
 
             Console.WriteLine("Labels added to the issue.");
-            // await context.GitHub.Issue.Labels.Add(owner, repo, context.IssueNumber,"TPM" );
 
 
             context.Logger.LogInformation($"Comment posted successfully to {context.Repository}#{context.IssueNumber}");
