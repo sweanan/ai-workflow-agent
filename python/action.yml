@@ -1,0 +1,29 @@
+name: 'Python Action'
+description: 'A Python-based action for AI Workflow Agent'
+author: 'Swetha Anand'
+
+inputs:
+  issue_content:
+    description: 'The content of the GitHub issue to process'
+    required: true
+  github_token:
+    description: 'GitHub token for API access'
+    required: true
+  repository:
+    description: 'Repository in the format owner/repo'
+    required: true
+  issue_number:
+    description: 'Issue number to comment on'
+    required: true
+
+outputs:
+  result:
+    description: 'Result of the operation'
+  status:
+    description: 'Status of the operation'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+
