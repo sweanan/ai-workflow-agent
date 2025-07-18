@@ -68,7 +68,8 @@ class IssueProcessingAgent:
         owner, repo = repository.split('/')
         issue = self.github_client.get_repo(f"{owner}/{repo}").get_issue(number=issue_number)
         issue.create_comment(comment)
-        issue.create_label(name="processed")
+        issue.add_to_labels("bug", "enhancement")
+        
         self.logger.info("Comment posted successfully")
 
 if __name__ == "__main__":
