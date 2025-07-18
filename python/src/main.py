@@ -18,7 +18,7 @@ class IssueProcessingAgent:
 
         # Post the comment to GitHub
         self.post_comment(repository, issue_number, comment)
-
+        
         return "Issue processed successfully"
 
     def analyze_issue(self, issue_content):
@@ -68,6 +68,8 @@ class IssueProcessingAgent:
         owner, repo = repository.split('/')
         issue = self.github_client.get_repo(f"{owner}/{repo}").get_issue(number=issue_number)
         issue.create_comment(comment)
+        issue.create_label(name="processed")
+        self.logger.info("Comment posted successfully")
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
