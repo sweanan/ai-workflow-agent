@@ -18,7 +18,7 @@ echo "Current workspace directory: $(pwd)"
 echo "Listing files in the workspace:"
 # List files in the current directory for debugging
 ls -R /github/workspace
-ls -R /github/workspace/src
+# ls -R /github/workspace/src
 
 echo "Listing files in the workspace:2"
 ls -R /app
