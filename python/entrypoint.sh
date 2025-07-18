@@ -15,14 +15,14 @@ if [ "$INPUT_VERBOSE" == "true" ]; then
 fi
 
 echo "Current workspace directory: $(pwd)"
-echo "Listing files in the workspace:"
-# List files in the current directory for debugging
-ls -R /github/workspace
+# echo "Listing files in the workspace:"
+# # List files in the current directory for debugging
+# ls -R /github/workspace
 # ls -R /github/workspace/src
 
-echo "Listing files in the workspace:2"
-ls -R /app
-ls -R /app/src
+# echo "Listing files in the workspace:2"
+# ls -R /app
+# ls -R /app/src
 # Check if the required input variables are set
 
 
@@ -34,9 +34,9 @@ echo "Verbose: $INPUT_VERBOSE"
 echo "Running Python AI Workflow Agent..."
 python /app/src/main.py
 
-# # Check if the output file was created
-# if [ -f "/tmp/github_output.txt" ]; then
-#   echo "Agent completed successfully, setting outputs..."
+# Check if the output file was created
+if [ -f "/tmp/github_output.txt" ]; then
+  echo "Agent completed successfully, setting outputs..."
   
 #   # Read the outputs from the file
 #   while IFS= read -r line; do
