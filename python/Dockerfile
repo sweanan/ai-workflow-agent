@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
@@ -13,4 +13,14 @@ COPY src/ ./src/
 RUN echo "Listing contents of /app for verification:" && ls -l /app
 RUN echo "Listing /app/src for verification:" && ls -l /app/src
 
-ENTRYPOINT ["python", "src/main.py"]
+# Expose port (if applicable)
+# EXPOSE 8080
+
+# ENTRYPOINT ["python", "src/main.py"]
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
